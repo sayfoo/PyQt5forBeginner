@@ -1,11 +1,12 @@
 import sys
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-from PyQt5 import uic
+from functools import partial
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QHBoxLayout, QVBoxLayout
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QFont, QColor
+from ui_texteditTest import Ui_Dialog
 
-form_class = uic.loadUiType("texteditTest.ui")[0]
 
-class WindowClass(QMainWindow, form_class) :
+class WindowClass(QMainWindow, Ui_Dialog) :
     def __init__(self) :
         super().__init__()
         self.setupUi(self)
@@ -14,7 +15,7 @@ class WindowClass(QMainWindow, form_class) :
         #TextEdit과 관련된 버튼에 기능 연결
         self.btn_printTextEdit.clicked.connect(self.printTextEdit)
         self.btn_clearTextEdit.clicked.connect(self.clearTextEdit)
-        self.btn_setFont.clicked.connect(self.setFont)
+        self.btn_setFont.clicked.connect(self.settingFont)
         self.btn_setFontItalic.clicked.connect(self.fontItalic)
         self.btn_setFontColor.clicked.connect(self.fontColorRed)
         self.btn_fontSizeUp.clicked.connect(self.fontSizeUp)
@@ -26,27 +27,39 @@ class WindowClass(QMainWindow, form_class) :
     def clearTextEdit(self) :
         self.textedit_Test.clear()
 
-    def setFont(self) :
-        fontvar = QFont("Apple SD Gothic Neo",10)
+    def settingFont(self) :
+        fontvar = QFont("Malgun Gothic",10)
         self.textedit_Test.setCurrentFont(fontvar)
+        self.textedit_Test.append("This is Text Edit\nThis widget support Rich Text")
 
     def fontItalic(self) :
         self.textedit_Test.setFontItalic(True)
+        self.textedit_Test.append("This is Text Edit\nThis widget support Rich Text")
 
     def fontColorRed(self) :
         colorvar = QColor(255,0,0)
         self.textedit_Test.setTextColor(colorvar)
+        self.textedit_Test.append("This is Text Edit\nThis widget support Rich Text")
 
     def fontSizeUp(self) :
         self.fontSize = self.fontSize + 1
         self.textedit_Test.setFontPointSize(self.fontSize)
+        self.textedit_Test.append("This is Text Edit\nThis widget support Rich Text")
 
     def fontSizeDown(self) :
         self.fontSize = self.fontSize - 1
         self.textedit_Test.setFontPointSize(self.fontSize)
+        self.textedit_Test.append("This is Text Edit\nThis widget support Rich Text")
 
-if __name__ == "__main__" :
-    app = QApplication(sys.argv)
-    myWindow = WindowClass()
-    myWindow.show()
-    app.exec_() 
+
+if __name__ == "__main__":
+    if not QApplication.instance():
+        app = QApplication(sys.argv)
+    else:
+        app = QApplication.instance()
+    exe = WindowClass()
+    exe.show()
+    try:
+        sys.exit(app.exec())
+    except SystemExit as e:
+        print(f"정상적으로 마쳐야 할텐뎅..[{e}]")

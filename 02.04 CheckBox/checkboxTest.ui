@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 170, 127);</string>
+  </property>
   <widget class="QCheckBox" name="chk_3">
    <property name="geometry">
     <rect>
@@ -21,6 +24,9 @@
      <width>95</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 170, 0);</string>
    </property>
    <property name="text">
     <string>CheckBox3</string>
@@ -35,6 +41,9 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 170, 0);</string>
+   </property>
    <property name="text">
     <string>CheckBox2</string>
    </property>
@@ -47,6 +56,9 @@
      <width>95</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 170, 0);</string>
    </property>
    <property name="text">
     <string>CheckBox4</string>
@@ -61,6 +73,9 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 170, 0);</string>
+   </property>
    <property name="text">
     <string>CheckBox1</string>
    </property>
@@ -73,6 +88,9 @@
      <width>171</width>
      <height>121</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(140, 184, 255);</string>
    </property>
    <property name="title">
     <string>GroupBox</string>

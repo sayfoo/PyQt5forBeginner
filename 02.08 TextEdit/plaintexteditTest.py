@@ -1,10 +1,11 @@
 import sys
-from PyQt5.QtWidgets import *
-from PyQt5 import uic
+from functools import partial
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QHBoxLayout, QVBoxLayout
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QFont, QColor
+from ui_plaintexteditTest import Ui_Dialog
 
-form_class = uic.loadUiType("plaintexteditTest.ui")[0]
-
-class WindowClass(QMainWindow, form_class) :
+class WindowClass(QMainWindow, Ui_Dialog) :
     def __init__(self) :
         super().__init__()
         self.setupUi(self)
@@ -24,8 +25,14 @@ class WindowClass(QMainWindow, form_class) :
     def appendPlainText(self) :
         self.plaintextedit_Test.appendPlainText("Append Plain Text")
 
-if __name__ == "__main__" :
-    app = QApplication(sys.argv)
-    myWindow = WindowClass()
-    myWindow.show()
-    app.exec_() 
+if __name__ == "__main__":
+    if not QApplication.instance():
+        app = QApplication(sys.argv)
+    else:
+        app = QApplication.instance()
+    exe = WindowClass()
+    exe.show()
+    try:
+        sys.exit(app.exec())
+    except SystemExit as e:
+        print(f"정상적으로 마쳐야 할텐뎅..[{e}]")

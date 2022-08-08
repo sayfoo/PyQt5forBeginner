@@ -1,10 +1,12 @@
 import sys
-from PyQt5.QtWidgets import *
-from PyQt5 import uic
+from functools import partial
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QHBoxLayout, QVBoxLayout
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QFont
+from ui_checkboxTest import Ui_Dialog
 
-form_class = uic.loadUiType("checkboxTest.ui")[0]
 
-class WindowClass(QMainWindow, form_class) :
+class WindowClass(QMainWindow, Ui_Dialog) :
     def __init__(self) :
         super().__init__()
         self.setupUi(self)
@@ -21,21 +23,29 @@ class WindowClass(QMainWindow, form_class) :
         self.groupchk_3.stateChanged.connect(self.groupchkFunction)
         self.groupchk_4.stateChanged.connect(self.groupchkFunction)
 
-    def chkFunction(self) :
+    def chkFunction(self):
         #CheckBox는 여러개가 선택될 수 있기 때문에 elif를 사용하지 않습니다.
         if self.chk_1.isChecked() : print("chk_1 isChecked")
         if self.chk_2.isChecked() : print("chk_2 isChecked")
         if self.chk_3.isChecked() : print("chk_3 isChecked")
         if self.chk_4.isChecked() : print("chk_4 isChecked")
 
-    def groupchkFunction(self) :
+    def groupchkFunction(self):
+        #CheckBox는 여러개가 선택될 수 있기 때문에 elif를 사용하지 않습니다.
         if self.groupchk_1.isChecked() : print("groupchk_1 isChecked")
         if self.groupchk_2.isChecked() : print("groupchk_2 isChecked")
         if self.groupchk_3.isChecked() : print("groupchk_3 isChecked")
         if self.groupchk_4.isChecked() : print("groupchk_4 isChecked")
 
-if __name__ == "__main__" :
-    app = QApplication(sys.argv)
-    myWindow = WindowClass()
-    myWindow.show()
-    app.exec_()
+
+if __name__ == "__main__":
+    if not QApplication.instance():
+        app = QApplication(sys.argv)
+    else:
+        app = QApplication.instance()
+    exe = WindowClass()
+    exe.show()
+    try:
+        sys.exit(app.exec())
+    except SystemExit as e:
+        print(f"정상적으로 마쳐야 할텐뎅..[{e}]")

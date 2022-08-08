@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>410</width>
-    <height>228</height>
+    <width>436</width>
+    <height>269</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 216, 249);</string>
   </property>
   <widget class="QTextBrowser" name="textbrow_Test">
    <property name="geometry">
@@ -22,8 +25,13 @@
      <height>192</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;나눔명조&quot;;
+color: rgb(0, 0, 127);
+background-color: rgb(255, 255, 127);</string>
+   </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -35,6 +43,20 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QPushButton" name="btn_Print">
+      <property name="styleSheet">
+       <string notr="true">QPushButton::hover
+{
+color: rgb(0, 0, 0);
+background-color : lightgreen;
+}
+QPushButton
+{
+color: rgb(255, 255, 0);
+font: 700 14pt &quot;맑은 고딕&quot;;
+background-color: rgb(255, 0, 0);
+}
+</string>
+      </property>
       <property name="text">
        <string>Print</string>
       </property>

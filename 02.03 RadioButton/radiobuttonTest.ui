@@ -6,21 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>438</width>
+    <height>343</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(129, 255, 158);</string>
+  </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>60</y>
-     <width>131</width>
-     <height>158</height>
+     <x>150</x>
+     <y>90</y>
+     <width>161</width>
+     <height>171</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(232, 117, 255);</string>
    </property>
    <property name="title">
     <string>GroupBox</string>
