@@ -15,11 +15,13 @@ class MyApp(QWidget, Ui_Form):
         self.timer = QTimer()
         self.disp_clock.setDigitCount(8)
         self.total_splitter.setSizes([200, 548])
+        self.hide = False       #
         # self.setup_datetime()
 
         self.timer.timeout.connect(self.display_datetime)
         self.start_btn.clicked.connect(self.start_datetime)
         self.stop_btn.clicked.connect(self.stop_datetime)
+        self.hide_btn.clicked.connect(self.toggle_left_image)
 
 
     def setup_datetime(self):
@@ -37,7 +39,17 @@ class MyApp(QWidget, Ui_Form):
         self.clock = self.display.split()[1] # time only
         self.disp_clock.display(self.clock)
 
-
+    def toggle_left_image(self):
+        if not self.hide:
+            self.total_splitter.setSizes([200, 548])
+            self.frame.setVisible(True)
+            print("hide")
+            self.hide = True
+        else:
+            self.total_splitter.setSizes([0, 548])
+            self.frame.setVisible(False)
+            print("show")
+            self.hide = False
 
     def start_datetime(self):
         self.timer.start(1000)
@@ -47,6 +59,7 @@ class MyApp(QWidget, Ui_Form):
         self.frame_01.setVisible(False)
         self.frame_02.setVisible(True)
         self.frame.setVisible(False)
+        self.hide = False
         # self.frame_02.setHidden(False)
 
 
@@ -59,6 +72,7 @@ class MyApp(QWidget, Ui_Form):
         self.frame_02.setVisible(True)
 
         self.frame.setVisible(True)
+        self.hide = True
         # self.frame_02.setHidden(True)
 
 
